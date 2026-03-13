@@ -1,0 +1,190 @@
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+
+  .shoppingCart {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 370px;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    background: #ffffff;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    box-sizing: border-box;
+
+    .cartHeading {
+      margin: 0;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+
+        .closeCart {
+        cursor: pointer;
+        }
+    }
+
+    .closeCartButton {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      &:focus-visible {
+        outline: 2px solid rgba(157, 213, 88, 0.7);
+        outline-offset: 3px;
+        border-radius: 10px;
+      }
+    }
+
+    .cartEmpty {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+
+      .emptyIcon {
+        width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      p {
+        width: 280px;
+        line-height: 24px;
+        opacity: 0.6;
+      }
+
+      .greenButton{
+        width: 245px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover{
+          img {
+            transform: rotate(180deg) translateX(3px);
+          }
+        }
+
+        img{
+          position: relative;
+          margin-right: 5px;
+          top: 1px;
+          transform: rotate(180deg);
+          transition: transform 0.15s ease-in-out;
+        }
+      }
+    }
+
+  p {
+    margin-bottom: 5px;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  b {
+    font-size: 14px;
+  }
+
+  .items {
+    flex: 1;
+    overflow: auto;
+    min-height: 0;
+  
+    .cartItem {
+      display: flex;
+      align-items: center;
+      border: 1px solid #f3f3f3;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 0 20px;
+      margin-bottom: 20px;
+
+      .deleteBtn {
+        margin-left: 90px;
+        opacity: 0.2;
+        cursor: pointer;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        transition: opacity 0.15s ease-in-out;
+      
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  .cartTotalBlock {
+    margin-top: 20px;
+
+    ul {
+      display: block;
+      padding: 0;
+      margin-bottom: 20px;
+
+      li {
+        display: flex;
+        align-items: flex-end;
+        list-style-type: none;
+        margin-bottom: 20px;
+
+        div {
+          flex: 1;
+          height: 1px;
+          border-bottom: 1px dashed #dfdfdf;
+          position: relative;
+          top: -3px;
+          margin: 0 7px;
+        }
+      }
+    }
+    
+    .greenButton {
+      position: relative;
+
+      &:disabled {
+        animation: button-loading 0.6s ease-in-out infinite;
+      }
+
+      img {
+        position: absolute;
+        right: 30px;
+        top: 15px;
+        transition: transform 0.15s ease-in-out;
+      }
+
+      &:hover {
+        img {
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+}
+}
+
+.overlayVisible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
