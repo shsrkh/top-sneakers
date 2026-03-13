@@ -90,33 +90,34 @@ function App() {
   }
 
   const onAddToFavorite = useCallback(async (product) => {
-    try {
-      setErrorMessage("");
-      const existing = favoriteItems.find(
-        (item) => Number(item.parentId) === Number(product.id)
-      );
+  try {
+    setErrorMessage("");
+    
+    const existing = favoriteItems.find(
+      (item) => Number(item.parentId) === Number(product.id)
+    );
 
-      if (existing) {
-        await axios.delete(
-          `https://69366fe7f8dc350aff30dc5e.mockapi.io/favorites/${existing.id}`
-        );
-        setFavoriteItems((prev) =>
-          prev.filter((item) => Number(item.id) !== Number(existing.id))
-        );
-        return;
-      }
-
-      const payload = { ...product, parentId: product.id };
-      const { data } = await axios.post(
-        "https://69366fe7f8dc350aff30dc5e.mockapi.io/favorites",
-        payload
+    if (existing) {
+      await axios.delete(
+        `https://69366fe7f8dc350aff30dc5e.mockapi.io/favorites/${existing.id}`
       );
-      setFavoriteItems((prev) => [...prev, data]);
+      setFavoriteItems((prev) =>
+        prev.filter((item) => Number(item.id) !== Number(existing.id))
+      );
+      return;
     }
-    catch (error) {
-      setErrorMessage("Could not update favorites. Please try again.")
-    }
-  }, [favoriteItems]);
+
+    const originalId = product.parentId !== undefined ? product.parentId : product.id;
+    const payload = { ...product, parentId: originalId };
+    const { data } = await axios.post(
+      "https://69366fe7f8dc350aff30dc5e.mockapi.io/favorites",
+      payload
+    );
+    setFavoriteItems((prev) => [...prev, data]);
+  } catch (error) {
+    setErrorMessage("Could not update favorites. Please try again.");
+  }
+}, [favoriteItems]);
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)

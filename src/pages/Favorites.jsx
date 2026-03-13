@@ -12,16 +12,16 @@ function Favorites({ items, onFavorite, onPlus }) {
         </div>
 
         <div className="sneakers">
-          {favoriteItems
-          .map(el => (
+          {favoriteItems.map(el => (
             <Card
             key={el.id}
+            {...el}
+            id={el.parentId}
             onFavorite={(el) => onFavorite(el)}
             onPlus={(el) => onPlus(el)}
             favorited={true}
-            {...el}
             />
-          ))}
+            ))}
         </div>
       </div>
     )
