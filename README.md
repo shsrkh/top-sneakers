@@ -4,11 +4,17 @@ A small e-commerce style React app for browsing sneakers, adding items to cart, 
 
 ## Live demo
 
-- Add your Netlify link here after deployment.
+- [Top Sneakers – Website](https://top-sneakerss.netlify.app/)
 
 ## Screenshots
 
-- Add 1–2 screenshots or a short GIF here (Home page, Cart open state).
+- Homepage:
+<img width="700" height="auto" alt="image" src="https://github.com/user-attachments/assets/a7321015-5f1b-4c76-87cf-415a6937d2b2" />
+
+- Shopping Cart:
+<img width="700" height="auto" alt="image" src="https://github.com/user-attachments/assets/8de8b9ae-5cf5-4e5e-a10e-f050c4fa4f50" />
+
+
 
 ## Features
 
